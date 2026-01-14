@@ -3,118 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novel - 小说书源维护</title>
-    <meta name="description" content="为阅读类 App 提供一站式书源服务，支持阅读、香色闺阁、爱阅书香">
+    <title>Novel - 小说书源维护 | 阅读 Legado、香色闺阁、爱阅书香</title>
+    <meta name="description" content="为阅读类 App 提供一站式书源服务，聚合 1000+ 纯小说书源，支持阅读 Legado、香色闺阁、爱阅书香三大平台。">
+    <meta name="keywords" content="书源,阅读,Legado,香色闺阁,爱阅书香,小说,书源导入,净化规则,TTS">
+    <meta name="author" content="tickmao">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://tickmao.github.io/Novel/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Novel - 小说书源维护">
+    <meta property="og:description" content="为阅读类 App 提供一站式书源服务，聚合 1000+ 纯小说书源。">
+    <meta property="og:url" content="https://tickmao.github.io/Novel/">
+    <meta property="og:site_name" content="Novel">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="favicon.svg">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Novel</h1>
-            <p class="subtitle">小说书源维护仓库</p>
-            <p class="desc">为阅读类 App 提供一站式书源服务</p>
+            <div class="header-top">
+                <div class="logo">Novel</div>
+                <nav class="nav">
+                    <a href="https://github.com/tickmao/Novel" target="_blank">GitHub</a>
+                    <a href="https://github.com/tickmao/Novel/blob/master/CREDITS.md" target="_blank">致谢</a>
+                    <a href="https://github.com/tickmao/Novel/blob/master/CHANGELOG.md" target="_blank">更新</a>
+                </nav>
+            </div>
+            <div class="title-section">
+                <div class="title-main">
+                    <h1>小说书源<span class="accent">✦</span></h1>
+                    <p class="subtitle">为阅读类 App 提供一站式书源服务，聚合多平台优质书源，支持阅读、香色闺阁、爱阅书香。</p>
+                </div>
+                <div class="stats-box">
+                    <div class="stat-item">
+                        <span class="stat-icon" aria-hidden="true">◈</span>
+                        <span class="stat-value">1046 个书源</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon" aria-hidden="true">◇</span>
+                        <span class="stat-value">3 个平台</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon" aria-hidden="true">○</span>
+                        <span class="stat-value">纯小说</span>
+                    </div>
+                </div>
+            </div>
         </header>
 
         <main>
-            <!-- 阅读 (Legado) -->
-            <section class="card">
-                <div class="card-header">
-                    <h2>阅读 (Legado)</h2>
-                    <span class="badge android">Android</span>
+            <!-- 书源 -->
+            <section class="section-card">
+                <div class="section-header">
+                    <span class="section-name">书源</span>
                 </div>
-                <div class="card-body">
+                <div class="section-body">
                     <div class="source-item">
                         <div class="source-info">
-                            <span class="source-name">全量书源</span>
-                            <span class="source-count">1339 个</span>
+                            <span class="source-name">阅读 Legado</span>
+                            <span class="source-count">1046 个纯小说书源</span>
                         </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/sources/legado/full.json">复制链接</button>
+                        <div class="source-badges">
+                            <span class="badge android">Android</span>
+                            <span class="badge ios">iOS</span>
+                        </div>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/sources/legado/full.json">复制</button>
                     </div>
                     <div class="source-item">
                         <div class="source-info">
-                            <span class="source-name">净化规则</span>
-                            <span class="source-count">20 条</span>
-                        </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/purify.json">复制链接</button>
-                    </div>
-                    <div class="source-item">
-                        <div class="source-info">
-                            <span class="source-name">TTS 配置</span>
-                            <span class="source-count">在线朗读</span>
-                        </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/tts.json">复制链接</button>
-                    </div>
-                    <div class="source-item">
-                        <div class="source-info">
-                            <span class="source-name">目录规则</span>
-                            <span class="source-count">章节识别</span>
-                        </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/toc.json">复制链接</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 香色闺阁 -->
-            <section class="card">
-                <div class="card-header">
-                    <h2>香色闺阁</h2>
-                    <span class="badge ios">iOS</span>
-                </div>
-                <div class="card-body">
-                    <div class="source-item">
-                        <div class="source-info">
-                            <span class="source-name">全量书源</span>
+                            <span class="source-name">香色闺阁</span>
                             <span class="source-count">1327 个站点</span>
                         </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/sources/xsreader/full.xbs">复制链接</button>
+                        <div class="source-badges">
+                            <span class="badge ios">iOS</span>
+                        </div>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/sources/xsreader/full.xbs">复制</button>
+                    </div>
+                    <div class="source-item">
+                        <div class="source-info">
+                            <span class="source-name">爱阅书香</span>
+                            <span class="source-count">第三方来源</span>
+                        </div>
+                        <div class="source-badges">
+                            <span class="badge ios">iOS</span>
+                        </div>
+                        <button class="copy-btn" data-url="https://github.com/shidahuilang/shuyuan/raw/shuyuan/aiyueshuxiang.ibs">复制</button>
                     </div>
                 </div>
             </section>
 
-            <!-- 爱阅书香 -->
-            <section class="card">
-                <div class="card-header">
-                    <h2>爱阅书香</h2>
-                    <span class="badge ios">iOS</span>
+            <!-- 净化规则 -->
+            <section class="section-card">
+                <div class="section-header">
+                    <span class="section-name">净化规则</span>
                 </div>
-                <div class="card-body">
+                <div class="section-body">
                     <div class="source-item">
                         <div class="source-info">
-                            <span class="source-name">书源地址</span>
-                            <span class="source-count">第三方</span>
+                            <span class="source-name">广告净化</span>
+                            <span class="source-count">去除广告干扰</span>
                         </div>
-                        <button class="copy-btn" data-url="https://github.com/shidahuilang/shuyuan/raw/shuyuan/aiyueshuxiang.ibs">复制链接</button>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/purify.json">复制</button>
                     </div>
                 </div>
             </section>
 
-            <!-- 其他资源 -->
-            <section class="card">
-                <div class="card-header">
-                    <h2>其他资源</h2>
+            <!-- TTS 配置 -->
+            <section class="section-card">
+                <div class="section-header">
+                    <span class="section-name">TTS 配置</span>
                 </div>
-                <div class="card-body">
+                <div class="section-body">
                     <div class="source-item">
                         <div class="source-info">
-                            <span class="source-name">霞鹜文楷字体</span>
-                            <span class="source-count">推荐</span>
+                            <span class="source-name">在线语音</span>
+                            <span class="source-count">语音朗读引擎</span>
                         </div>
-                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/fonts/LXGWWenKai.ttf">复制链接</button>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/tts.json">复制</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 目录规则 -->
+            <section class="section-card">
+                <div class="section-header">
+                    <span class="section-name">目录规则</span>
+                </div>
+                <div class="section-body">
+                    <div class="source-item">
+                        <div class="source-info">
+                            <span class="source-name">章节识别</span>
+                            <span class="source-count">智能目录解析</span>
+                        </div>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/rules/legado/toc.json">复制</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 字体 -->
+            <section class="section-card">
+                <div class="section-header">
+                    <span class="section-name">字体</span>
+                </div>
+                <div class="section-body">
+                    <div class="source-item">
+                        <div class="source-info">
+                            <span class="source-name">霞鹜文楷</span>
+                            <span class="source-count">推荐阅读字体</span>
+                        </div>
+                        <button class="copy-btn" data-url="https://cdn.jsdelivr.net/gh/tickmao/Novel@master/fonts/LXGWWenKai.ttf">复制</button>
                     </div>
                 </div>
             </section>
         </main>
 
         <footer>
-            <p class="disclaimer">
-                声明：本站仅作为书源聚合分享，版权归原创作者所有。
-                <a href="https://github.com/tickmao/Novel/blob/master/CREDITS.md" target="_blank">致谢</a>
-            </p>
-            <p class="meta">
-                <span>最后更新：2026-01-14</span>
-                <span class="divider">|</span>
+            <div class="footer-left">
+                版权归原创作者所有 · <a href="https://github.com/tickmao/Novel/blob/master/CREDITS.md" target="_blank">致谢</a>
+            </div>
+            <div class="footer-right">
+                <span>2026.01.14</span>
                 <a href="https://github.com/tickmao/Novel" target="_blank">GitHub</a>
-            </p>
+                <a href="https://blog.tickmao.com" target="_blank">Blog</a>
+            </div>
         </footer>
     </div>
 

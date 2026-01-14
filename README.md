@@ -6,7 +6,7 @@
 
 | 平台 | App | 书源数量 |
 |------|-----|---------|
-| Android | [阅读 (Legado)](https://gedoor.github.io/) | 1339 |
+| Android / iOS | [阅读 (Legado)](https://gedoor.github.io/) | 1046 |
 | iOS | [香色闺阁](https://apps.apple.com/app/id1521205149) | 1327 |
 | iOS | [爱阅书香](https://apps.apple.com/app/id1137819437) | 待更新 |
 
