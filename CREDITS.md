@@ -4,29 +4,13 @@
 
 ## 书源来源
 
-### Legado (阅读)
-
-| 来源 | 作者 | 链接 |
-|------|------|------|
-| 源仓库发布页 | yuedu | [发布页](http://yuedu.miaogongzi.net) |
-| aoaostar 聚合 | aoaostar | [GitLab](https://jihulab.com/aoaostar/legado) |
-| XIU2 精品书源 | XIU2 | [GitHub](https://github.com/XIU2/Yuedu) |
-| shidahuilang | shidahuilang | [GitHub](https://github.com/shidahuilang/shuyuan) |
-| yuedu520 | yuedu520 | [GitHub](https://github.com/yuedu520/yuedu) |
-| yiove 书源 | yiove | [网站](https://shuyuan-api.yiove.com) |
-| tickmao 收集 | tickmao | 本仓库 |
-
-### 香色闺阁
-
-| 来源 | 作者 | 链接 |
-|------|------|------|
-| shidahuilang | shidahuilang | [GitHub](https://github.com/shidahuilang/shuyuan) |
-
-### 爱阅书香
-
-| 来源 | 作者 | 链接 |
-|------|------|------|
-| shidahuilang | shidahuilang | [GitHub](https://github.com/shidahuilang/shuyuan) |
+| 来源          | 作者         | 链接                                              |
+| ------------- | ------------ | ------------------------------------------------- |
+| 源仓库发布页  | yuedu        | [发布页](http://yuedu.miaogongzi.net)             |
+| aoaostar 聚合 | aoaostar     | [GitLab](https://jihulab.com/aoaostar/legado)     |
+| XIU2 精品书源 | XIU2         | [GitHub](https://github.com/XIU2/Yuedu)           |
+| shidahuilang  | shidahuilang | [GitHub](https://github.com/shidahuilang/shuyuan) |
+| yiove 书源    | yiove        | [网站](https://shuyuan-api.yiove.com)             |
 
 ## 免责声明
 
@@ -41,4 +25,4 @@
 
 ---
 
-*最后更新：2026-01-14*
+_最后更新：2026-01-14_

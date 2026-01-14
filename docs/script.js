@@ -23,7 +23,7 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
                 btn.classList.remove('copied');
             }, 3000);
         } catch (err) {
-            // 降级方案
+            // 降级方案：使用已废弃的 execCommand（兼容旧浏览器）
             const textarea = document.createElement('textarea');
             textarea.value = url;
             textarea.style.position = 'fixed';
