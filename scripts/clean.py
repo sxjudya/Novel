@@ -2,12 +2,15 @@
 """
 书源清洗脚本
 - 去除表情符号
+- 去除括号及内容
 - 规范名称和分组
 - 清理多余空格
+- 可选：按评分自动分组（精选/标准/备用）
 """
 
 import json
 import re
+import time
 import argparse
 from pathlib import Path
 
@@ -27,6 +30,9 @@ EMOJI_PATTERN = re.compile(
 
 # 特殊符号（需要移除）
 SPECIAL_SYMBOLS = re.compile(r'[★☆✦✧⭐🌟💫🔥💥✨🎉🎊📚📖📕📗📘📙👍👎👏🙏💪❤️💕💖💗💙💚💛✅❌⭕❗❓①②③④⑤⑥⑦⑧⑨⑩Ⅰ-Ⅻ～~丨|｜👁🔰🎨📻📥💠🎉]+')
+
+# 括号及内容（中文括号、英文括号、方括号）
+BRACKET_PATTERN = re.compile(r'[（(【\[][^）)】\]]*[）)】\]]')
 
 # 分组名称映射（原始 -> 标准）
 GROUP_MAPPING = {
@@ -49,12 +55,75 @@ GROUP_MAPPING = {
 }
 
 
-def remove_emoji(text: str) -> str:
-    """移除表情符号"""
+def calculate_quality_score(source: dict) -> int:
+    """计算书源质量评分（满分约 60）"""
+    score = 0
+
+    # 基础状态 (0-7)
+    if source.get('enabled', True):
+        score += 5
+    if source.get('enabledExplore'):
+        score += 2
+
+    # 响应时间 (0-15)
+    rt = source.get('respondTime', 99999)
+    if rt < 1000:
+        score += 15
+    elif rt < 3000:
+        score += 12
+    elif rt < 5000:
+        score += 8
+    elif rt < 10000:
+        score += 4
+
+    # 规则完整性 (0-20)
+    if source.get('searchUrl'):
+        score += 4
+    if source.get('ruleSearch') or source.get('searchRule'):
+        score += 4
+    if source.get('ruleToc') or source.get('tocRule'):
+        score += 4
+    if source.get('ruleContent') or source.get('contentRule'):
+        score += 6
+    if source.get('exploreUrl'):
+        score += 2
+
+    # 更新时间 (0-10)
+    last = source.get('lastUpdateTime', 0)
+    if last:
+        days = max(0, (time.time() * 1000 - last) / 86400000)
+        if days < 30:
+            score += 10
+        elif days < 90:
+            score += 7
+        elif days < 180:
+            score += 4
+        elif days < 365:
+            score += 2
+
+    # 权重 (0-5)
+    score += min(source.get('weight', 0) // 100, 5)
+
+    return score
+
+
+def get_grade_group(score: int) -> str:
+    """根据评分返回分组名称"""
+    if score >= 45:
+        return "精选"
+    elif score >= 40:
+        return "标准"
+    else:
+        return "备用"
+
+
+def strip_decorations(text: str) -> str:
+    """移除装饰性内容（表情、特殊符号、括号及内容）"""
     if not text:
         return ""
     text = EMOJI_PATTERN.sub("", text)
     text = SPECIAL_SYMBOLS.sub("", text)
+    text = BRACKET_PATTERN.sub("", text)
     return text
 
 
@@ -79,21 +148,25 @@ def normalize_group(group: str) -> str:
         return GROUP_MAPPING[group]
 
     # 清洗后再映射
-    cleaned = clean_spaces(remove_emoji(group))
+    cleaned = clean_spaces(strip_decorations(group))
     if cleaned in GROUP_MAPPING:
         return GROUP_MAPPING[cleaned]
 
     return cleaned
 
 
-def clean_source(source: dict) -> dict:
+def clean_source(source: dict, grade: bool = False) -> dict:
     """清洗单个书源"""
     # 清洗名称
     if "bookSourceName" in source:
-        source["bookSourceName"] = clean_spaces(remove_emoji(source["bookSourceName"]))
+        source["bookSourceName"] = clean_spaces(strip_decorations(source["bookSourceName"]))
 
-    # 清洗分组
-    if "bookSourceGroup" in source:
+    # 按评分分组（覆盖原有分组）
+    if grade:
+        score = calculate_quality_score(source)
+        source["bookSourceGroup"] = get_grade_group(score)
+    # 仅清洗分组
+    elif "bookSourceGroup" in source:
         source["bookSourceGroup"] = normalize_group(source["bookSourceGroup"])
 
     # 清洗备注（保留内容，只去表情）
@@ -107,15 +180,16 @@ def clean_source(source: dict) -> dict:
     return source
 
 
-def clean_sources(sources: list) -> list:
+def clean_sources(sources: list, grade: bool = False) -> list:
     """批量清洗书源"""
-    return [clean_source(s) for s in sources]
+    return [clean_source(s, grade) for s in sources]
 
 
 def main():
     parser = argparse.ArgumentParser(description="书源清洗脚本")
     parser.add_argument("--input", "-i", required=True, help="输入文件路径")
     parser.add_argument("--output", "-o", required=True, help="输出文件路径")
+    parser.add_argument("--grade", "-g", action="store_true", help="按评分自动分组（精选/标准/备用）")
     args = parser.parse_args()
 
     input_path = Path(args.input)
@@ -130,9 +204,11 @@ def main():
         sources = json.load(f)
 
     print(f"读取书源：{len(sources)} 个")
+    if args.grade:
+        print("启用评分分组模式")
 
     # 清洗
-    cleaned = clean_sources(sources)
+    cleaned = clean_sources(sources, grade=args.grade)
 
     # 输出
     output_path.parent.mkdir(parents=True, exist_ok=True)
