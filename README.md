@@ -16,7 +16,7 @@
 
 打开 App -> 我的 -> 书源管理 -> 右上角菜单 -> 网络导入 -> 粘贴链接
 
-**全量书源 (1339 个)**
+**全量书源 (1046 个)**
 ```
 https://cdn.jsdelivr.net/gh/tickmao/Novel@master/sources/legado/full.json
 ```
