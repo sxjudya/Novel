@@ -33,3 +33,16 @@ test_*.json
 
 # Logs
 *.log
+
+# Backup files
+*.backup.json
+*_before_*.json
+
+# Preview images
+preview*.png
+
+# Playwright MCP
+.playwright-mcp/
+
+# Temporary book sources
+yiove_new.json
